@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "./AuthContext";
 import CourseCard from "./CourseCard";
+import { Link } from "react-router-dom";
 
 function StudentDashboard() {
   const [courses, setCourses] = useState([]);
@@ -25,12 +26,33 @@ function StudentDashboard() {
         <div class="col-md-6">
           <h3 className="mb-4">Cursos</h3>
           {courses.map((course) => {
-            return <CourseCard course={course}></CourseCard>;
+            return (
+              <Link
+                to={"/student/course/" + course.courseId}
+                style={{ textDecoration: "none" }}
+              >
+                <CourseCard course={course}></CourseCard>
+              </Link>
+            );
           })}
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 vstack">
           <h3 className="mb-4">Aplicaciones</h3>
-          <div class="bg-secondary text-white p-3">Right Column</div>
+          <Link to="/">
+            <button class="btn btn-secondary mb-3" style={{ width: "200px" }}>
+              Historial Académico
+            </button>
+          </Link>
+          <Link to="/">
+            <button class="btn btn-secondary mb-3" style={{ width: "200px" }}>
+              Retiros de Materia
+            </button>
+          </Link>
+          <Link to="/">
+            <button class="btn btn-secondary mb-3" style={{ width: "200px" }}>
+              Inclusiones de Materia
+            </button>
+          </Link>
         </div>
       </div>
     </div>

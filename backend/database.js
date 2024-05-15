@@ -50,4 +50,25 @@ async function executeQuery(query) {
   });
 }
 
-module.exports = { executeQuery };
+// Recibe un string con la operación a ejecutar
+// Ejecuta la operación en la base de datos
+async function executeStatement(statement) {
+  return new Promise((resolve, reject) => {
+    pool.getConnection((err, connection) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      connection.query(statement, (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  });
+}
+
+module.exports = { executeQuery, executeStatement };

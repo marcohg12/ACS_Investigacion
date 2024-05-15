@@ -26,13 +26,33 @@ function ProfessorDashboard() {
         <div class="col-md-6">
           <h3 className="mb-4">Cursos</h3>
           {courses.map((course) => {
-            return <CourseCard course={course}></CourseCard>;
+            return (
+              <Link
+                to={"/professor/course/" + course.courseId}
+                style={{ textDecoration: "none" }}
+              >
+                <CourseCard course={course}></CourseCard>
+              </Link>
+            );
           })}
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 vstack ">
           <h3 className="mb-4">Administración</h3>
-          <Link to="/"></Link>
-          <div class="bg-secondary text-white p-3">Right Column</div>
+          <Link to="/">
+            <button class="btn btn-secondary mb-3" style={{ width: "150px" }}>
+              Comités
+            </button>
+          </Link>
+          <Link to="/">
+            <button class="btn btn-secondary mb-3" style={{ width: "150px" }}>
+              Estadísticas
+            </button>
+          </Link>
+          <Link to="/">
+            <button class="btn btn-secondary mb-3" style={{ width: "150px" }}>
+              Investigaciones
+            </button>
+          </Link>
         </div>
       </div>
     </div>
