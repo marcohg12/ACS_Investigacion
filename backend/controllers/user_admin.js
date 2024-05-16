@@ -5,7 +5,8 @@ const { JWT_SECRET_KEY } = require("../constants");
 // --------------------------------------------------------------------------------------------------------------------
 
 async function loginUser(email, password) {
-  const query = `SELECT userId, userName, userEmail, userRole FROM SystemUser WHERE userEmail = '${email}' AND userPassword = '${password}';`;
+  const query = `SELECT userId, userName, userEmail, userRole FROM SystemUser 
+                 WHERE userEmail = '${email}' AND userPassword = '${password}';`;
   let user;
   try {
     user = await dbManager.executeQuery(query);

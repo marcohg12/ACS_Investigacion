@@ -20,10 +20,6 @@ app.use("/course", courseRouter);
 
 // --------------------------------------------------------------------------------------------------------------------
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 app.listen(port, () => {
   console.log("The server is running...");
 });
